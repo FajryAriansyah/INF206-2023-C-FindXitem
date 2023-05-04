@@ -10,7 +10,8 @@
     @section('container')
 
       <div class="kategori">
-        <div class="card1">
+        
+        <div class="card1 shadow-md ...">
           <form>
             <img src="{{ asset('images/cathp.png') }}" alt="Gambar 2" data-src="{{ asset('img/catlost.jpg') }}">
             <h2>Hewan</h2>
