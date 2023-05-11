@@ -31,6 +31,25 @@ class Barang extends Model
        return 'https://wa.me/'.$noHP.'?text='.urlencode($pesan);
    }
 
+   public function cari(Request $request){
+
+        $barang = Barang::all();
+        $cocok = 0;
+        if($request->nama){
+            $barang = $barang->where('nama', 'like', '%'.$request->nama,'%');
+        
+            if($request->waktu){
+                $barang = $barang->where('waktu', $request->waktu);
+            }
+            if($request->lokasi){
+                $barang = $barang->where('waktu', $request->lokasi);
+            }
+        }
+        dd($barang);
+
+   }
+
+
 }
 
 

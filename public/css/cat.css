@@ -1,0 +1,61 @@
+
+body {
+   
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  
+  .kategori {
+    display: flex;
+    flex-wrap: nowrap; /* Membuat elemen tidak melompat ke baris baru */
+    justify-content: center; /* Menyentuh elemen ke tengah */
+    align-items: center; /* Menyentuh elemen ke tengah secara vertikal */
+    margin: auto;
+  }
+  
+  .card1,
+  .card2,
+  .card3,
+  .card4,
+  .card5 {
+    background-image: url();
+    width: 33.33%; /* Membagi lebar parent (kategori) menjadi 3 bagian */
+    text-align: center;
+    margin: 10px;
+  }
+  
+  form:hover{
+    background-color: whitesmoke;
+    transform: scale(1.05);
+  }
+  
+  /* Mengatur tampilan pada saat hover */
+  form:hover{
+    background-color: whitesmoke;
+    transform: scale(1.05);
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  /* Sembunyikan elemen gambar dan deskripsi */
+  img, p {
+    display: none;
+  }
+  
+  /* Tampilkan elemen gambar dan deskripsi ketika kelas active ditambahkan */
+  img.active, p.active {
+    display: block;
+  }
+  
+
+

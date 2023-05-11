@@ -14,8 +14,25 @@
                 </div>
             </li>
             <li class="navbar-item"><a href="/about">About</a></li>
-            <button class="btn login me-2 rounded-pill" onclick="window.location='{{ url('/login') }}'">Masuk</button>
-            <button class="btn daftar ms-2 rounded-pill" onclick="register()">Daftar</button>
+            @auth
+            <li class="navbar-item ">
+               
+                    <i class="bi bi-person-circle  btnDropdownIcon" onclick="toggle_dropdown_icon()" style="width:2rem"></i>
+                    
+                <div class="wrapper">
+                    <div class="drop-down bg-primary p-2" style="width:20px" id="dropdownIcon">
+                        <form action="/logout" method="POST" >
+                            @csrf
+                            <button type="submit" class="dropdown-item" ><i
+                                    class="bi bi-box-arrow-right"></i>Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </li>
+             @else   
+             <button class="btn login me-2 rounded-pill" onclick="window.location='{{ url('/login') }}'">Masuk</button>
+             <button class="btn daftar ms-2 rounded-pill" onclick="window.location='{{ url('/login') }}'">Daftar</button>
+            @endauth
         </ul>
     </div>
 </div>
@@ -32,6 +49,17 @@
                 myDropdown.classList.remove('show')
             }
         }
+        if(!e.target.matches('.btnDropdownIcon')){
+            var myDropdown = document.getElementById("dropdownIcon");
+            if(myDropdown.classList.contains('show')){
+                myDropdown.classList.remove('show')
+            }
+        }
     }
+    function toggle_dropdown_icon(){
+        document.getElementById('dropdownIcon').classList.toggle('show');
+    }
+
+   
 
 </script>

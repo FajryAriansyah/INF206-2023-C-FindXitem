@@ -115,14 +115,25 @@ background-color: #b4b4b4;
     color: white;
 }
 
+.navbar-item .btnDropdownIcon{
+  font-size:2rem;
+  cursor:pointer;
+  margin-right: 2rem;
+}
+
+
+.navbar-item .btnDropdownIcon:hover{
+  background-color: rgba(145, 49, 49, 0);
+}
+
 .drop-down{
     display: none;
     position: absolute;
-    margin-top: 10px;
+   
     border-radius: 10px;
     z-index: 1;
     flex-direction: column;
-    min-width:140px;
+    min-width:100px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     background-color: rgba(10, 10, 10, 0.623);
     

@@ -5,7 +5,11 @@
    @if($result->count())
     <div class="content p-5 rounded bg-light d-flex align-self-center shadow">
         <div class="col foto text-center">
-            <img src="/img/hp-1.jpeg" alt="">
+            @if ($result[0]->image)
+                <img src="{{ asset('storage/'. $result[0]->image) }}" alt="">
+                @else
+                <img src="{{ asset('storage/'. $result[0]->image) }}" alt="">
+            @endif
         </div>
         <div class="col deskripsi d-flex flex-col justify-content-center mt-0 fs-5 border-start ps-3">
             <span>Barang : {{ $result[0]->nama }}</span>

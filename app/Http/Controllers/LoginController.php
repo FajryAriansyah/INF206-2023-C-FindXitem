@@ -47,4 +47,13 @@ class LoginController extends Controller
         return back()->with('loginError','Maaf login gagal');
     }
 
+    public function logout(){
+        Auth::logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        
+        return redirect('/');
+    }
+
 }

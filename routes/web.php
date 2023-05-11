@@ -3,6 +3,8 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+
+use App\Http\Controllers\aboutController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\RegisterController;
@@ -28,6 +30,8 @@ Route::get('/search/hasil', [BarangController::class, 'searchResult']);
 
 Route::get('/kategori', [KategoriController::class, 'index']);
 
+Route::get('/about', [aboutController::class, 'about']);
+
 
 
 Route::get('/report', [BarangController::class, 'report']);
@@ -42,6 +46,7 @@ Route::get('/result/notfound', [Controller::class, 'notfound']);
 
 Route::get('/login', [LoginController::class, 'login']);
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 
 Route::post('/login/create', [LoginController::class, 'store']);
