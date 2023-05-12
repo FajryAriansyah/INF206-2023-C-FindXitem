@@ -29,19 +29,23 @@ class BarangController extends Controller
             // $request->file('image')->store('img');
         }
         
-        Barang::create([
-            "nama" => $request['nama'],
-            "kategori" => $request['kategori'],
-            "warna_dasar" => $request['warna_dasar'],
-            "warna_sekunder" => $request['warna_sekunder'],
-            "image" => $link,
-            "brand" => $request['brand'],
-            "lokasi" => $request['lokasi'],
-            "waktu" => $request['waktu'],
-            "nama_penemu" =>$request['nama_penemu'],
-            "noHp" => $request['noHp'],
-            "email" => $request['email'],
+        $validated = $request->validate([
+            'nama' => 'required',
+            'kategori' => 'required',
+            'warna_dasar' => 'required',
+            'warna_sekunder' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:12400',
+            'brand' => 'required',
+            'lokasi' => 'required',
+            'waktu' => 'required|date_format:Y-m-d H:i:s|after:today',
+            'nama_penemu' => 'required',
+            'noHp' => 'required|numeric|min:10',
+            'email' => 'required|email',
         ]);
+
+        Barang::create(
+            $validated
+        );
         return redirect('/report/hasil');
     }
 
@@ -52,9 +56,10 @@ class BarangController extends Controller
     }
     public function searchResult(Request $request){
        
-        $result = Barang::where('nama', 'like', '%' . request('nama') . '%')->get();
-        
+        // $result = Barang::where('nama', 'like', '%' . request('nama') . '%')->get();
 
+        $barang = Barang::cari($request);
+        
         return view('Search.hasil',[
             'title' => 'result',
             'result' => $result
