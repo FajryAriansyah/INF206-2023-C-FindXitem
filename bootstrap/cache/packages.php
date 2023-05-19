@@ -27,6 +27,17 @@
       0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
+  'laravolt/indonesia' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravolt\\Indonesia\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Indonesia' => 'Laravolt\\Indonesia\\Facade',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 

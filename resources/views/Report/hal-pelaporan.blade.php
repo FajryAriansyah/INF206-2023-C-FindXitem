@@ -13,9 +13,17 @@
                     <input type="text" name="nama" class="input form-control">
                 </div>
                 <div class="input_field">
+                    @php
+                        $kategori = App\Models\Kategori::all();
+                    @endphp
                     <label for="">Kategori Barang</label>
-                    <p class="deskripsi-input">(Hewan, Pakaian, Elektronik dll). </p>
-                    <input type="text" name="kategori" class="input form-control">
+                    <p class="deskripsi-input">(Handphone, Pakaian, Elektronik dll). </p>
+                    <input list="kategori" type="text" name="kategori" class="input form-control">
+                    <datalist id="kategori">
+                        @foreach ($kategori as $item)
+                            <option value="{{ $item->nama }}">
+                        @endforeach
+                    </datalist>
                 </div>
                 <div class="input_field">
                     <label for="">Warna utama Barang</label>
@@ -49,7 +57,18 @@
                 <div class="input_field">
                     <label for="">Lokasi Penemuan</label>
                     <p class="deskripsi-input">(Tuliskan lokasi kira-kira ditemukan barang). </p>
-                    <input type="text" class="input form-control" name="lokasi">
+                    <input list="kampung" type="text" class="input" name="lokasi">
+                    @php
+                          use Illuminate\Support\Facades\DB;
+                        
+                         $kampungs = DB::table('indonesia_villages')->whereBetween('district_code', [117101,117109])->get();
+                        //  dd($kampungs[0])
+                    @endphp
+                    <datalist id="kampung">
+                        @foreach ($kampungs as $kampung)
+                            <option value="{{ $kampung->name }}">
+                        @endforeach
+                    </datalist>
                 </div>
                 <div class="input_field">
                     <label for="">Tanggal Penemuan</label>

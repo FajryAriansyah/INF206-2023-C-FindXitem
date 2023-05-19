@@ -13,7 +13,7 @@
         </div>
         <div class="col deskripsi d-flex flex-col justify-content-center mt-0 fs-5 border-start ps-3">
             <span>Barang : {{ $result[0]->nama }}</span>
-            <span>Kategori : {{ $result[0]->kategori }}</span>
+            <span>Kategori : {{ $result[0]->kategori->nama }}</span>
             <span>Lokasi ditemukan : {{ $result[0]->lokasi }}</span>
             <span>Waktu ditemukan : {{ $result[0]->waktu }}</span>
             <br>

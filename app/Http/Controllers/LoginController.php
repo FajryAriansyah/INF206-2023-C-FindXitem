@@ -41,6 +41,9 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
+            if(auth()->user()->name == "iniadmingantengsekali270703"){
+                return redirect('/dashboard');
+            }
             return redirect()->intended('/landing-page');
         }
        

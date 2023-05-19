@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             
             $table->string('nama');
-            $table->string('kategori');
+            $table->foreignId('kategori_id');
             $table->string('warna_dasar');
             $table->string('warna_sekunder')->nullable();
             $table->string('image')->nullable();

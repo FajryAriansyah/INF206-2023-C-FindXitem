@@ -39,7 +39,11 @@ class Controller extends BaseController
     public function verif($id){
 
         $data = Barang::findOrFail($id);
-       
+        // dd($data);
+
+        if($data->kategori_id == 1){
+            return redirect('search/hasil/'.$data->id.'/verif');
+        }
         return view('Search.verifikasi',[
             'title' => 'Verifikasi',
             'result' => $data

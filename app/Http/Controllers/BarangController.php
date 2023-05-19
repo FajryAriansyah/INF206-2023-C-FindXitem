@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Barang;
 
 class BarangController extends Controller
 {
@@ -22,6 +23,18 @@ class BarangController extends Controller
     public function store(Request $request){
 
         
+        $id = Kategori::where('nama', $request->kategori)->get();
+        // dd($id->isEmpty());
+        if($id->isEmpty()){
+            Kategori::create([
+                'nama' => $request->kategori,
+                'slug' => str_replace(' ','-',$request->kategori),
+                'english' => $request->kategori
+            ]);
+        }
+
+        $request->kategori = Kategori::where('nama', $request->kategori)->get()[0]->id;
+        // dd($request->kategori);
         if($request->file('image')){
             $link = 'img/'.time().'-'.$request->image->getClientOriginalName();
             $request->image->move('storage/img', $link);
@@ -52,13 +65,35 @@ class BarangController extends Controller
     }
     public function searchResult(Request $request){
        
-        $result = Barang::where('nama', 'like', '%' . request('nama') . '%')->get();
+        // $result = Barang::where('nama', 'like', '%' . request('nama') . '%')->get();
+        $barang = Barang::query();
         
-
+        // $cocok = 0;
+        if($request->nama){
+            $barang = $barang->where('nama', 'like', '%'.$request->nama.'%');
+        }
+        if($request->waktu){
+            $barang = $barang->where('waktu', $request->waktu);
+        }
+        if($request->lokasi){
+            $barang = $barang->where('waktu', $request->lokasi);
+        }
+        $barang = $barang->get();
+        // dd($barang[0]);
+        
         return view('Search.hasil',[
             'title' => 'result',
-            'result' => $result
+            'result' => $barang
         ]);
         
     }
+    public function searchResultView(Barang $barang){
+        // dd($barang->nama);
+        return view('Search.hasilBarang',[
+            'title' => 'Result',
+            'result' => $barang
+        ]);
+    }
+
+
 }
