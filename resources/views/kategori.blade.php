@@ -1,7 +1,7 @@
 @extends('Layouts.main')
 
 @section('container')
-<div class=""
+<div class="">
     <div class="kategori text-center">
         <div class="row gap-3 justify-content-center">
 

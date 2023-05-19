@@ -6,17 +6,17 @@
         <div class="kalimat">Website untuk menemukan barang hilang adalah sebuah platform online yang dibuat untuk membantu orang mencari barang yang hilang atau kehilangan milik mereka. Situs web semacam ini dapat memfasilitasi proses pencarian dengan cara mengumpulkan informasi tentang barang yang hilang dan kemudian mempublikasikannya untuk dilihat oleh orang-orang yang mungkin memiliki informasi yang berguna atau bahkan telah menemukannya.</div>
         <div class="anggota">
             <div class="anggota-item">
-              <img src="img/fajry.png" alt="Foto Fajry" style="width: 200px;">
+            <img src="{{ asset('img/fajry.jpeg') }}"  alt="Foto Fajry" style="width: 200px; height:200px; border-radius: 20px">
               <span class="anggota-nama">Fajry Ariansyah</span>
               <span class="anggota-nama">2108107010059</span>
             </div>
             <div class="anggota-item">
-              <img src="img/devi.png" alt="Foto Devi" style="width: 200px;">
+            <img src="{{ asset('img/devi.jpeg') }}"  alt="Foto Devi" style="width: 200px; height: 200px;border-radius: 20px">
               <span class="anggota-nama">Devi Anggraini</span>
               <span class="anggota-nama">2108107010008</span>
             </div>
             <div class="anggota-item">
-              <img src="img/rifal.png" alt="Foto Teuku" style="width: 200px;">
+            <img src="{{ asset('img/rifal.jpeg') }}"  alt="Foto Teuku" style="width: 200px;border-radius: 20px">
               <span class="anggota-nama">Teuku Rifal Aulia</span>
               <span class="anggota-nama">2108107010064</span>
             </div>
@@ -57,6 +57,7 @@
     color: black;
     margin: 400;
     font-size: 30px;
+
   }
   
   .anggota-item {
@@ -64,6 +65,9 @@
     flex-direction: column;
     align-items: center;
     margin-right: 50px;
+    
+    background: white;
+    
   }
   
   .anggota-nama {
