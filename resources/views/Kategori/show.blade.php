@@ -10,7 +10,7 @@
                         <a href="/search/hasil/{{ $item->id }}">
                             <div class="card p-4">
                                 <p>{{ $item->nama }}</p>
-                                <img {{ $item->image != null ? 'src=' . asset('storage/' . $item->image) . 'width="400" height="400"' : 'src=https://source.unsplash.com/400x400/?' . $item->kategori->english }}"
+                                <img {{ $item->image != null ? 'src=' . asset('/storage/' . $item->image) . ' \"width="400" height="400\" "' : 'src=https://source.unsplash.com/400x400/?' . $item->kategori->english }}"
                                     alt="{{ $item->nama }}">
                                 <br>
                                 <span>Ditemukan di : {{ $item->lokasi }}</span>

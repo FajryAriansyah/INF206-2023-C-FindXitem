@@ -33,7 +33,7 @@ class BarangController extends Controller
             ]);
         }
 
-        $request->kategori = Kategori::where('nama', $request->kategori)->get()[0]->id;
+        $cid = Kategori::where('nama', $request->kategori)->get()[0]->id;
         // dd($request->kategori);
         if($request->file('image')){
             $link = 'img/'.time().'-'.$request->image->getClientOriginalName();
@@ -44,7 +44,7 @@ class BarangController extends Controller
         
         Barang::create([
             "nama" => $request['nama'],
-            "kategori_id" => $request['kategori'],
+            "kategori_id" => $cid,
             "warna_dasar" => $request['warna_dasar'],
             "warna_sekunder" => $request['warna_sekunder'],
             "image" => $link,
