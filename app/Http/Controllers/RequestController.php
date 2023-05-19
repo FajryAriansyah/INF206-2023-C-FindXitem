@@ -22,22 +22,22 @@ class RequestController extends Controller
         $ada = RequestVerif::where('barang_id', $barang->id)
             ->where('user_id', auth()->user()->id)->first();
 
-        // dd($ada);
-        if ($ada->count()) {
-            $sudahVerif = 'sudah';
-
             if ($ada->status == 'accepted') {
-
+    
                 return redirect('verifikasi/'.$barang->id);
-
+    
             } elseif ($ada->status == 'rejected') {
-
+    
                 $ada->delete();
-
+    
                 return view('verif.rejected', [
                     'title' => 'Rejected',
                 ]);
             }
+        // dd($ada);
+        if ($ada->count()) {
+            $sudahVerif = 'sudah';
+
         } else {
 
             $sudahVerif = 'belum';
