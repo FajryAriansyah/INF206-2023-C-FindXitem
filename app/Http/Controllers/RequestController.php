@@ -22,11 +22,14 @@ class RequestController extends Controller
         $ada = RequestVerif::where('barang_id', $barang->id)
             ->where('user_id', auth()->user()->id)->first();
 
-            if ($ada->status == 'accepted') {
+            if ($ada->status === 'accepted') {
     
-                return redirect('verifikasi/'.$barang->id);
+                return view('Search.verifikasi',[
+                    'title' => 'Verifikasi',
+                    'result' => $barang
+                ]);
     
-            } elseif ($ada->status == 'rejected') {
+            } elseif ($ada->status === 'rejected') {
     
                 $ada->delete();
     

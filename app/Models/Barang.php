@@ -29,6 +29,7 @@ class Barang extends Model
             $pesan = 'Selamat Malam,' . $pesan;
         }
 
+        $this->delete();
        return 'https://wa.me/'.$noHP.'?text='.urlencode($pesan);
    }
 

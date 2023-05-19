@@ -44,7 +44,7 @@ class BarangController extends Controller
         
         Barang::create([
             "nama" => $request['nama'],
-            "kategori" => $request['kategori'],
+            "kategori_id" => $request['kategori'],
             "warna_dasar" => $request['warna_dasar'],
             "warna_sekunder" => $request['warna_sekunder'],
             "image" => $link,
